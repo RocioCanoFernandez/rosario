@@ -35,8 +35,9 @@ const ToldosHub = () => {
     address: "C. Julio César, bloque 4 - Local 2, 41900 Camas, Sevilla",
     hours: "Lunes a Viernes: 9:00 a 17:00h",
     hubUrl: "https://hub-toldosalkamas.npfusf.easypanel.host/", // Provisional
-    bgImg: "/rosario_foto.jpg", 
-    heroImg: "/equipo_rosario.jpg"
+    bgImg: "/rosario_foto.jpg", // Fondo general (opcional)
+    heroImg: "/equipo_rosario.jpg", // Banner cabecera
+    profileImg: "/rosario_foto.jpg" // Círculo de perfil
   };
 
   const handleSaveContact = () => {
@@ -63,27 +64,40 @@ const ToldosHub = () => {
 
       <div className="relative z-10 w-full max-w-lg mx-auto flex flex-col flex-1 pb-16 shadow-2xl shadow-black/5 bg-white/40 backdrop-blur-3xl min-h-screen">
         
+        {/* Hero Banner */}
+        <div className="w-full h-48 md:h-56 relative rounded-b-3xl overflow-hidden shadow-md -mb-16 z-0">
+           <img 
+              src={data.heroImg} 
+              alt="Equipo Toldos Al Kamas" 
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.target.style.display = 'none';
+              }}
+           />
+           <div className="absolute inset-0 bg-gradient-to-b from-[#3E4A2F]/40 to-transparent"></div>
+        </div>
+
         {/* Floating VCard Button */}
         <button 
           onClick={handleSaveContact}
-          className="absolute top-6 right-6 w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all z-20 group hover:scale-105 active:scale-95"
+          className="absolute top-6 right-6 w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all z-20 group hover:scale-105 active:scale-95"
           style={{ backgroundColor: colors.white, border: `1px solid ${colors.bgCard}` }}
           title="Guardar Contacto"
         >
           <Download className="w-5 h-5 transition-colors" style={{ color: colors.primary }} />
         </button>
 
-        {/* Header Hero Area */}
-        <div className="px-6 pt-12 pb-6 flex flex-col items-center text-center">
+        {/* Header Content Area */}
+        <div className="px-6 pt-0 pb-6 flex flex-col items-center text-center relative z-10">
           
-          <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden mb-6 shadow-xl relative border-4" style={{ borderColor: colors.white, backgroundColor: colors.bgCard }}>
+          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden mb-6 shadow-xl relative border-4" style={{ borderColor: colors.white, backgroundColor: colors.bgCard }}>
             <img 
-              src={data.heroImg} 
-              alt="Equipo Toldos Al Kamas" 
+              src={data.profileImg} 
+              alt="Rosario Pacheco" 
               className="w-full h-full object-cover"
               onError={(e) => {
                 e.target.style.display = 'none';
-                e.currentTarget.parentElement.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:${colors.primary};font-weight:bold;">SIN IMAGEN</div>`;
+                e.currentTarget.parentElement.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:${colors.primary};font-weight:bold;">ROSARIO</div>`;
               }}
             />
           </div>
