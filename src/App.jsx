@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Clock, Globe, Instagram, Facebook, Download, MessageCircle, Sun, Calendar, ChevronRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Globe, Instagram, Facebook, Download, MessageCircle, Sun, Calendar, ChevronRight, Linkedin, PlayCircle, Pin } from 'lucide-react';
 
 const colors = {
   primary: '#3E4A2F',     // texto principal y contrastes fuertes
@@ -31,6 +31,9 @@ const ToldosHub = () => {
     web: "http://toldos-al-kamas.blogspot.com.es",
     instagram: "https://www.instagram.com/toldos_alkamas",
     facebook: "https://www.facebook.com/toldosalkamas",
+    tiktok: "https://www.tiktok.com/@alkamastoldos_info?_r=1&_t=ZN-96FUcKmPNhO",
+    linkedin: "https://www.linkedin.com/in/toldos-alkamas-ahorro-energía-7bb95763?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    pinterest: "https://pin.it/3m55inNBF",
     maps: "https://www.google.com/maps/dir//TOLDOS+AL+KAMAS,+C.+Julio+C%C3%A9sar,+bloque+4+-+Local+2,+41900+Camas,+Sevilla/@37.3911475,-5.9938349,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0xd126b63a40a8953:0x939e2b454992dfdd!2m2!1d-6.0392119!2d37.4034115?entry=ttu&g_ep=EgoyMDI2MDQxMy4wIKXMDSoASAFQAw%3D%3D",
     address: "C. Julio César, bloque 4 - Local 2, 41900 Camas, Sevilla",
     hours: "Lunes a Viernes: 9:00 a 17:00h",
@@ -41,7 +44,7 @@ const ToldosHub = () => {
   };
 
   const handleSaveContact = () => {
-    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:${data.name}\r\nORG:${data.name}\r\nTITLE:${data.person}\r\nTEL;TYPE=WORK,VOICE:${data.phone}\r\nEMAIL;TYPE=INTERNET:${data.email}\r\nURL:${data.web}\r\nURL:${data.hubUrl}\r\nADR;TYPE=WORK:;;C. Julio César\\, bloque 4 - Local 2;Camas;Sevilla;41900;España\r\nNOTE:${data.activity}\r\nEND:VCARD`;
+    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nN:;${data.name};;;\nFN:${data.name}\r\nORG:${data.name}\r\nTITLE:${data.person}\r\nTEL;TYPE=WORK,VOICE:${data.phone}\r\nEMAIL;TYPE=INTERNET:${data.email}\r\nURL:${data.web}\r\nURL:${data.hubUrl}\r\nADR;TYPE=WORK:;;C. Julio César\\, bloque 4 - Local 2;Camas;Sevilla;41900;España\r\nNOTE:${data.activity}\r\nEND:VCARD`;
     const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -164,6 +167,39 @@ const ToldosHub = () => {
              <div className="flex flex-col">
                <span className="font-bold text-[15px]">Facebook</span>
                <span className="text-[11px] font-medium opacity-60">Novedades y comunidad</span>
+             </div>
+             <ChevronRight className="w-5 h-5 ml-auto opacity-30 group-hover:opacity-100 transition-opacity" style={{ color: colors.secondary }} />
+          </a>
+
+          <a href={data.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-2xl bg-white shadow-sm border border-transparent hover:border-[#A9D87A]/50 transition-all hover:-translate-y-1 group">
+             <div className="w-12 h-12 flex items-center justify-center rounded-xl" style={{ backgroundColor: colors.bgCard, color: colors.primary }}>
+               <Linkedin className="w-6 h-6 group-hover:scale-110 transition-transform" />
+             </div>
+             <div className="flex flex-col">
+               <span className="font-bold text-[15px]">LinkedIn</span>
+               <span className="text-[11px] font-medium opacity-60">Perfil profesional</span>
+             </div>
+             <ChevronRight className="w-5 h-5 ml-auto opacity-30 group-hover:opacity-100 transition-opacity" style={{ color: colors.secondary }} />
+          </a>
+
+          <a href={data.tiktok} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-2xl bg-white shadow-sm border border-transparent hover:border-[#A9D87A]/50 transition-all hover:-translate-y-1 group">
+             <div className="w-12 h-12 flex items-center justify-center rounded-xl" style={{ backgroundColor: colors.bgCard, color: colors.primary }}>
+               <PlayCircle className="w-6 h-6 group-hover:scale-110 transition-transform" />
+             </div>
+             <div className="flex flex-col">
+               <span className="font-bold text-[15px]">TikTok</span>
+               <span className="text-[11px] font-medium opacity-60">@alkamastoldos_info</span>
+             </div>
+             <ChevronRight className="w-5 h-5 ml-auto opacity-30 group-hover:opacity-100 transition-opacity" style={{ color: colors.secondary }} />
+          </a>
+
+          <a href={data.pinterest} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-2xl bg-white shadow-sm border border-transparent hover:border-[#A9D87A]/50 transition-all hover:-translate-y-1 group">
+             <div className="w-12 h-12 flex items-center justify-center rounded-xl" style={{ backgroundColor: colors.bgCard, color: colors.primary }}>
+               <Pin className="w-6 h-6 group-hover:scale-110 transition-transform" />
+             </div>
+             <div className="flex flex-col">
+               <span className="font-bold text-[15px]">Pinterest</span>
+               <span className="text-[11px] font-medium opacity-60">Inspiración e ideas</span>
              </div>
              <ChevronRight className="w-5 h-5 ml-auto opacity-30 group-hover:opacity-100 transition-opacity" style={{ color: colors.secondary }} />
           </a>
